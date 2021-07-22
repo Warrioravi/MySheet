@@ -95,7 +95,7 @@ font-size: 20%;
  color: #53B8BB;
 }
 .menu-item:hover{
-    background-color:#1c4142;
+    background-color:#09777a;
     cursor: pointer;
 }
 .menu-item.selected :hover{
@@ -205,7 +205,7 @@ border: 1px solid lightgray;
     
 }
 .input-cell.selected{
-    border: 2px solid green;
+    border: 2px solid #53B8BB;
 }
 .formula-editor{
    margin-left: 10px;
