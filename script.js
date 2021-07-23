@@ -50,11 +50,53 @@ let cellContainer = $(".input-cell-container");
   $(".style-icon").click(function(){
       $(this).toggleClass("selected");
   })
-
-  $(".input-cell").click(function(){
-      $(".input-cell.selected").removeClass("selected");
-      $(this).addClass("selected");
+  $(".input-cell").click(function(e){
+      if(e.ctrlKey){
+        $(this).addClass("selected");
+        //   let [row,col]= getRowCol(this);
+        //   if(row>1){
+        //       let topCellSelected=$(`#row-${row-1}-col-${col}`).hasClass("selected");
+        //       if(topCellSelected){
+        //           $(this).addClass("top-cell-selected");
+        //       }
+        //       $(`#row-${row-1}-col-${col}`).addClass("bottom-cell-selected");
+        //   }
+        //   if(row<100){
+        //     let bottomCellSelected=$(`#row-${row+1}-col-${col}`).hasClass("selected");
+        //     if(bottomCellSelected){
+        //         $(this).addClass("bottom-cell-selected");
+        //     }
+        //     $(`#row-${row+1}-col-${col}`).addClass("top-cell-selected");
+        //   }
+        //     if(col>1){
+        //     let leftCellSelected=$(`#row-${row}-col-${col-1}`).hasClass("selected");
+        //     if(leftCellSelected){
+        //         $(this).addClass("left-cell-selected");
+        //     }
+        //     $(`#row-${row}-col-${col-1}`).addClass("right-cell-selected");
+        //    }
+        // if(col<100){
+        //     let rightCellSelected=$(`#row-${row}-col-${col+1}`).hasClass("selected");
+        //     if(rightCellSelected){
+        //         $(this).addClass("right-cell-selected");
+        //     }
+        //     $(`#row-${row}-col-${col+1}`).addClass("left-cell-selected");
+        //    }
+           
+       }
+      else{
+          $(".input-cell.selected").removeClass("selected");
+          $(this).addClass("selected");
+      }
   })
+//   $(".input-cell").click(function (e){
+//      console.log(e);
+//   })
+
+//   $(".input-cell").click(function(){
+//       $(".input-cell.selected").removeClass("selected");
+//       $(this).addClass("selected");
+//   })
 
   $(".input-cell").dblclick(function () {
       $(".input-cell.selected").removeClass("selected");
@@ -64,14 +106,21 @@ let cellContainer = $(".input-cell-container");
     });
 
     $(".input-cell-container").scroll(function () {
-        console.log(this.scrollLeft); 
+        // console.log(this.scrollLeft); 
         $(".column-name-container").scrollLeft(this.scrollLeft);
         $(".row-name-container").scrollTop(this.scrollTop);
-     })
+    })
 
 
  
 
 });
+
+function getRowCol(element){
+   let rowCol=$(element).attr("id");//$(element).attr("id").split("-")
+   let row=parseInt(rowCol.charAt(4));
+   let col=parseInt(rowCol.charAt(10));
+   return [row,col];
+}
 
 
